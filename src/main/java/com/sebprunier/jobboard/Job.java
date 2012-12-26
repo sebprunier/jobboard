@@ -15,6 +15,18 @@ public class Job implements Serializable {
 
     private Date creationDate;
 
+    public Job() {
+        super();
+    }
+
+    public Job(Long id, String title, String description, Date creationDate) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.creationDate = creationDate;
+    }
+
     public Long getId() {
         return id;
     }

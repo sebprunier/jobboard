@@ -1,4 +1,4 @@
-package com.sebprunier.jobboard;
+package com.sebprunier.jobboard.publisher;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,6 +8,8 @@ import org.eclipse.egit.github.core.Gist;
 import org.eclipse.egit.github.core.GistFile;
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.service.GistService;
+
+import com.sebprunier.jobboard.Job;
 
 public class GithubJobPublisher implements JobPublisher {
 

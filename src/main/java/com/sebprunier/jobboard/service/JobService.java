@@ -1,6 +1,8 @@
-package com.sebprunier.jobboard;
+package com.sebprunier.jobboard.service;
 
 import java.util.List;
+
+import com.sebprunier.jobboard.Job;
 
 public interface JobService {
 

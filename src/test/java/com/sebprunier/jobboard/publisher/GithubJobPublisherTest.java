@@ -1,8 +1,12 @@
-package com.sebprunier.jobboard;
+package com.sebprunier.jobboard.publisher;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
+
+import com.sebprunier.jobboard.Job;
+
+import com.sebprunier.jobboard.publisher.GithubJobPublisher;
 
 public class GithubJobPublisherTest {
 
