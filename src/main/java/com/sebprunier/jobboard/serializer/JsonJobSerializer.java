@@ -12,7 +12,7 @@ public class JsonJobSerializer implements JobSerializer {
     private ObjectMapper newObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, true);
-        objectMapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, true);
+        // objectMapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, true);
         return objectMapper;
     }
 
