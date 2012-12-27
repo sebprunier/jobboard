@@ -44,15 +44,15 @@ public class InMemoryPersisterTest {
     public void testSaveOrUpdate() {
         InMemoryPersister persister = injector.getInstance(InMemoryPersister.class);
         // Save
-        Job job = new Job("3", "Job 3", "This is Job number three", new Date(1356537739208L));
+        Job job = new Job(null, "Job 3", "This is Job number three", new Date(1356537739208L));
         persister.saveOrUpdate(job);
-        Assert.assertNotNull(persister.getCache().getIfPresent("3"));
+        Assert.assertNotNull(persister.getCache().getIfPresent(job.getId()));
         Assert.assertEquals(3, persister.getCache().size());
 
         // Update
         job.setDescription("new description ...");
         persister.saveOrUpdate(job);
-        Assert.assertNotNull(persister.getCache().getIfPresent("3"));
+        Assert.assertNotNull(persister.getCache().getIfPresent(job.getId()));
         Assert.assertEquals(3, persister.getCache().size());
     }
 
