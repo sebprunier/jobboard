@@ -15,7 +15,7 @@ public class JobService {
         this.persister = persister;
     }
 
-    public Job get(Long jobId) {
+    public Job get(String jobId) {
         return persister.find(jobId);
     }
 

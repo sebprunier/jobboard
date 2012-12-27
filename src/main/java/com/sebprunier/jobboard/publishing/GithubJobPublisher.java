@@ -20,7 +20,6 @@ public class GithubJobPublisher implements JobPublisher {
 
     private JobSerializer serializer;
 
-    
     @Inject
     public GithubJobPublisher(JobSerializer serializer) {
         super();
