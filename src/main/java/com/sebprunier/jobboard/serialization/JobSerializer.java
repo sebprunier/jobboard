@@ -1,4 +1,4 @@
-package com.sebprunier.jobboard.serializer;
+package com.sebprunier.jobboard.serialization;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.sebprunier.jobboard.publisher;
+package com.sebprunier.jobboard.publishing;
 
 import java.util.List;
 

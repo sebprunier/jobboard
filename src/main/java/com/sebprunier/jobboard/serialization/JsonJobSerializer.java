@@ -1,4 +1,4 @@
-package com.sebprunier.jobboard.serializer;
+package com.sebprunier.jobboard.serialization;
 
 import java.util.List;
 
@@ -38,14 +38,12 @@ public class JsonJobSerializer implements JobSerializer {
 
     @Override
     public Job unmarshall(String text) {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("Not yet implemented !");
     }
 
     @Override
     public List<Job> unmarshallAll(String text) {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("Not yet implemented !");
     }
 
 }

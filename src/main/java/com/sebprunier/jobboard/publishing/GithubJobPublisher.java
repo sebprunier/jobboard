@@ -1,4 +1,4 @@
-package com.sebprunier.jobboard.publisher;
+package com.sebprunier.jobboard.publishing;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,29 +9,34 @@ import org.eclipse.egit.github.core.GistFile;
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.service.GistService;
 
+import com.google.inject.Inject;
 import com.sebprunier.jobboard.Job;
+import com.sebprunier.jobboard.serialization.JobSerializer;
 
 public class GithubJobPublisher implements JobPublisher {
 
     private static final String JOBS_GIST_ID = "4380455";
-
     private static final String JOBS_GIST_FILE = "jobs.json";
 
-    @Override
-    public void publish(Job job) {
-        throw new UnsupportedOperationException("Cannot publish only one job !");
+    private JobSerializer serializer;
+
+    
+    @Inject
+    public GithubJobPublisher(JobSerializer serializer) {
+        super();
+        this.serializer = serializer;
     }
 
     @Override
     public void publishAll(List<Job> jobs) {
         try {
-            updateGistContent();
+            updateGistContent(jobs);
         } catch (IOException e) {
             throw new RuntimeException("Error while pushing content to github !", e);
         }
     }
 
-    private void updateGistContent() throws IOException {
+    private void updateGistContent(List<Job> jobs) throws IOException {
         // Read github authentication info from system properties
         // TODO read from properties file ?
         final String githubUser = System.getProperty("github.user");
@@ -49,7 +54,13 @@ public class GithubJobPublisher implements JobPublisher {
         GistFile jobsFile = gistFiles.get(JOBS_GIST_FILE);
 
         // Update gist content !
-        jobsFile.setContent("// TODO !");
+        String serializedJobs = serializer.marshallAll(jobs);
+        jobsFile.setContent(serializedJobs);
         service.updateGist(gist);
+    }
+
+    @Override
+    public void publish(Job job) {
+        throw new UnsupportedOperationException("Cannot publish only one job !");
     }
 }
