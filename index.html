@@ -1,11 +1,25 @@
 <!doctype html>
-<html ng-app="jobsApp">
+<html xmlns:ng="http://angularjs.org">
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
 		<script src="jobs.js"></script>
+		<!--[if lte IE 8]>
+			<script>
+				document.createElement('ng-include');
+				document.createElement('ng-pluralize');
+				document.createElement('ng-view');
+ 				// Optionally these for CSS
+				document.createElement('ng:include');
+				document.createElement('ng:pluralize');
+				document.createElement('ng:view');
+			</script>
+			<script src="json3.min.js"></script>
+		<![endif]-->
+		
 		<link rel="stylesheet" href="jobs.css" />
+		
 	</head>
-	<body>
+	<body id="ng-app" ng-app="jobsApp">
 		<h1>Jobs</h1>
 		<div ng-controller="JobsCtrl">
 			<table>
