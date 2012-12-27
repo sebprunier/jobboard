@@ -16,7 +16,7 @@ public class InMemoryPersister implements JobPersister {
 
     public InMemoryPersister() {
         super();
-        cache = CacheBuilder.newBuilder().maximumSize(1000).build();
+        cache = CacheBuilder.newBuilder().maximumSize(100).build();
     }
 
     @Override
