@@ -21,6 +21,9 @@
 	</head>
 	<body id="ng-app" ng-app="jobsApp">
 		<h1>Jobs</h1>
+		<p>
+			Filter : <input ng-model="query" />
+		</p>
 		<div ng-controller="JobsCtrl">
 			<table>
 				<thead>
@@ -32,7 +35,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="job in jobs">
+					<tr ng-repeat="job in jobs | filter:query">
 						<td>#{{job.id}}</td>
 						<td>{{job.title}}</td>
 						<td>{{job.description}}</td>
