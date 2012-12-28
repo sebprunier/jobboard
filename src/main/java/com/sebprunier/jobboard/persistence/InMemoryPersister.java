@@ -46,7 +46,7 @@ public class InMemoryPersister implements JobPersister {
     public void delete(Job job) {
         cache.invalidate(job.getId());
     }
-    
+
     protected Cache<String, Job> getCache() {
         return cache;
     }

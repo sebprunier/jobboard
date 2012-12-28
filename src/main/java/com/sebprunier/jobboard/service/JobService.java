@@ -1,8 +1,9 @@
-package com.sebprunier.jobboard;
+package com.sebprunier.jobboard.service;
 
 import java.util.List;
 
 import com.google.inject.Inject;
+import com.sebprunier.jobboard.Job;
 import com.sebprunier.jobboard.persistence.JobPersister;
 
 public class JobService {
