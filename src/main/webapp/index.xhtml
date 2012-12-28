@@ -7,12 +7,32 @@
 <ui:composition template="WEB-INF/layout/template.xhtml">
 	<ui:define name="title">Jobboard</ui:define>
 	<ui:define name="body">
+		<h1>Create a new Job</h1>
+		<h:form>
+			<p>
+				Title : <h:inputText value="#{jobManagedBean.newJob.title}"></h:inputText> <br/>
+				Description : <h:inputText value="#{jobManagedBean.newJob.description}"></h:inputText><br/>
+				<h:commandButton value="Create" action="#{jobManagedBean.create}"></h:commandButton>
+			</p>
+		</h:form>
 		<h1>All jobs</h1>
 		<h:dataTable value="#{jobManagedBean.allJobs}" var="job">
+			<h:column>
+				<h:outputText value="#{job.id}"></h:outputText>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+			</h:column>
 			<h:column>
 				<h:outputText value="#{job.title}"></h:outputText>
 				<f:facet name="header">
 					<h:outputText value="Title" />
+				</f:facet>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{job.description}"></h:outputText>
+				<f:facet name="header">
+					<h:outputText value="Description" />
 				</f:facet>
 			</h:column>
 		</h:dataTable>

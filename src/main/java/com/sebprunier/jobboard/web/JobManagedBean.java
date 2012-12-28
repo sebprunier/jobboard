@@ -1,6 +1,5 @@
 package com.sebprunier.jobboard.web;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -18,6 +17,8 @@ public class JobManagedBean {
 
     private JobService jobService;
 
+    private Job newJob = new Job();
+
     public JobManagedBean() {
         super();
         ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
@@ -26,11 +27,24 @@ public class JobManagedBean {
     }
 
     public List<Job> getAllJobs() {
-        // JobService jobService = retrieveJobService();
-        long currentTimeMillis = System.currentTimeMillis();
-        jobService.create(new Job(String.valueOf(currentTimeMillis), "Job " + currentTimeMillis, "This is job number "
-                + currentTimeMillis, new Date()));
         return jobService.getAll();
     }
 
+    public String create() {
+        jobService.create(newJob);
+        reset();
+        return null;
+    }
+
+    public Job getNewJob() {
+        return newJob;
+    }
+
+    public void setNewJob(Job newJob) {
+        this.newJob = newJob;
+    }
+
+    private void reset() {
+        this.newJob = new Job();
+    }
 }

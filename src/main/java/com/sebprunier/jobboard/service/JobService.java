@@ -1,5 +1,6 @@
 package com.sebprunier.jobboard.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -25,6 +26,7 @@ public class JobService {
     }
 
     public void create(Job job) {
+        job.setCreationDate(new Date());
         persister.saveOrUpdate(job);
     }
 
