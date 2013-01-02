@@ -3,6 +3,7 @@ package com.sebprunier.jobboard.publishing;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.eclipse.egit.github.core.Gist;
 import org.eclipse.egit.github.core.GistFile;
@@ -36,10 +37,11 @@ public class GithubJobPublisher implements JobPublisher {
     }
 
     private void updateGistContent(List<Job> jobs) throws IOException {
-        // Read github authentication info from system properties
-        // TODO read from properties file ?
-        final String githubUser = System.getProperty("github.user");
-        final String githubPassword = System.getProperty("github.password");
+        // Read github authentication info from properties
+        final Properties githubProperties = new Properties();
+        githubProperties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("github.properties"));
+        final String githubUser = githubProperties.getProperty("github.user");
+        final String githubPassword = githubProperties.getProperty("github.password");
 
         // Create client and gist service
         GitHubClient client = new GitHubClient();
