@@ -10,11 +10,11 @@ import com.google.inject.Singleton;
 import com.sebprunier.jobboard.Job;
 
 @Singleton
-public class InMemoryPersister implements JobPersister {
+public class InMemoryJobPersister implements JobPersister {
 
     private Cache<String, Job> cache;
 
-    public InMemoryPersister() {
+    public InMemoryJobPersister() {
         super();
         cache = CacheBuilder.newBuilder().maximumSize(100).build();
     }
